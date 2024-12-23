@@ -21,7 +21,7 @@ function ImageGenerator() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.HUGGINGFACE_API_KEY}`,
+            Authorization: `Bearer ${import.meta.env.VITE_HUGGINGFACE_API_KEY}`,
             "User-Agent": "Chrome",
           },
           body: JSON.stringify({
