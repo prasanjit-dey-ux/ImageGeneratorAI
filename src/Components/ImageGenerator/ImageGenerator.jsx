@@ -1,75 +1,3 @@
-// import { useState,useRef } from 'react'
-// import default_img from '../Assets/default_img.jfif'
-
-// function ImageGenerator() {
-
-//     const [imageUrl, setImageUrl] = useState("/");
-//     let inputRef = useRef(null);
-
-//     const imageGenerator = async () => {
-//         if (inputRef.current.value.trim() === "") {
-//             return ;
-//         }
-
-//         try{
-//         const response = await fetch(
-//            "https://api-inference.huggingface.co/models/Artples/LAI-ImageGeneration-vSDXL-2",
-//            {
-//             method : "POST",
-//             headers:{
-//                 "Content-type" : "application/json",
-//                 Authorization: 
-//                 `Bearer ${import.meta.env.VITE_HUGGINGFACE_API_KEY}`,
-//                 "User-Agent" : "Chrome",
-//             },
-//                 body:JSON.stringify({
-//                     inputs: inputRef.current.value.trim(),                
-//                 }),
-//            } 
-//         );
-
-//         if(!response.ok){
-//             const errorText = await response.text();
-//             console.error('Error response:', errorText);
-//             throw new Error('Network response was not ok');
-//         }
-
-//         const blob = await response.blob();
-//         const url = URL.createObjectURL(blob);
-
-//         setImageUrl(url)
-//     }catch(error){
-//         console.error('There was a problem with the fetch operation:', error);
-    
-//     }
-// };
-
-//   return (
-//     <>
-//     <div className=' bg-gray-950 h-screen text-white flex justify-center items-center'>
-    
-//     <div className='ai-image-generator min-h-96  flex flex-col   p-8 bg-violet-400'>
-        
-//         <div className='header text-4xl font-bold pb-6'>AI Image <span className='text-violet-800'>Generator</span> </div>
-//         <div className="img_loading flex flex-col">
-//         <img className="h-80" src={imageUrl === "/" ? default_img : imageUrl} alt="Deafult" />
-//         </div>
-   
-//          <div className="search-box flex flex-col justify-center pt-8 ">
-//            <input type="text" ref = {inputRef} className='search-input p-3 w-full text-black ' placeholder='Describe what you want to see' /> 
-//            <div className="generate-btn px-6 py-3 bg-violet-700 w-24 flex justify-center mt-4 cursor-pointer" onClick={() => {imageGenerator()}}>Generate</div>
-//         </div>
-       
-    
-//     </div> 
-//     </div>
-//     </>
-//   )
-// }
-
-// export default ImageGenerator
-
-
 import { useState, useRef } from "react";
 import default_img from "../Assets/default_img.jfif";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
@@ -153,13 +81,12 @@ function ImageGenerator() {
           {/* Download button */}
           {imageUrl !== "/" && !loading && (
             <button
-            onClick={downloadImage}
-            className="absolute top-4 right-4 p-3 bg-black bg-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-70"
+              onClick={downloadImage}
+              className="absolute top-4 right-4 p-3 bg-black bg-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-70"
             >
-                <ArrowDownTrayIcon className="h-6 w-6 text-white" />
-             </button>
-        )}
-
+              <ArrowDownTrayIcon className="h-6 w-6 text-white" />
+            </button>
+          )}
         </div>
 
         <div className="search-box flex flex-col justify-center pt-8">
@@ -182,6 +109,7 @@ function ImageGenerator() {
 }
 
 export default ImageGenerator;
+
 
 
 
