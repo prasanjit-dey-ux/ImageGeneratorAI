@@ -56,23 +56,23 @@ function ImageGenerator() {
 
   return (
     <div className="bg-gray-950 h-screen text-white flex justify-center items-center">
-      <div className="ai-image-generator min-h-96 flex flex-col p-8 bg-violet-400 rounded-lg">
-        <div className="header text-4xl font-bold pb-6">
+      <div className="ai-image-generator min-h-96 flex flex-col p-6 sm:p-8 bg-violet-400 rounded-lg w-full max-w-md">
+        <div className="header text-3xl sm:text-4xl font-bold pb-4 sm:pb-6">
           AI Image <span className="text-violet-800">Generator</span>
         </div>
 
         <div className="img_loading flex flex-col justify-center items-center relative">
           {/* Display loading spinner or image */}
           {loading ? (
-            <div className="spinner h-80 flex justify-center items-center">
+            <div className="spinner h-64 sm:h-80 flex justify-center items-center">
               <div
-                className="spinner-border animate-spin inline-block w-24 h-24 border-4 rounded-full border-t-transparent border-violet-800"
+                className="spinner-border animate-spin inline-block w-16 sm:w-24 h-16 sm:h-24 border-4 rounded-full border-t-transparent border-violet-800"
                 role="status"
               ></div>
             </div>
           ) : (
             <img
-              className="h-80 rounded-md"
+              className="h-64 sm:h-80 rounded-md"
               src={imageUrl === "/" ? default_img : imageUrl}
               alt="Generated"
             />
@@ -82,14 +82,14 @@ function ImageGenerator() {
           {imageUrl !== "/" && !loading && (
             <button
               onClick={downloadImage}
-              className="absolute top-4 right-4 p-3 bg-black bg-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-70"
+              className="absolute top-2 sm:top-4 right-2 sm:right-4 p-2 sm:p-3 bg-black bg-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-70"
             >
-              <ArrowDownTrayIcon className="h-6 w-6 text-white" />
+              <ArrowDownTrayIcon className="h-5 sm:h-6 w-5 sm:w-6 text-white" />
             </button>
           )}
         </div>
 
-        <div className="search-box flex flex-col justify-center pt-8">
+        <div className="search-box flex flex-col justify-center pt-6 sm:pt-8">
           <input
             type="text"
             ref={inputRef}
@@ -97,7 +97,7 @@ function ImageGenerator() {
             placeholder="Describe what you want to see"
           />
           <button
-            className="generate-btn px-6 py-3 bg-violet-700 rounded-md mt-4 text-white font-bold hover:bg-violet-800"
+            className="generate-btn px-4 sm:px-6 py-2 sm:py-3 bg-violet-700 rounded-md mt-4 text-white font-bold hover:bg-violet-800"
             onClick={imageGenerator}
           >
             Generate
@@ -109,3 +109,4 @@ function ImageGenerator() {
 }
 
 export default ImageGenerator;
+
